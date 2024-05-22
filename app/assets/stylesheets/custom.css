@@ -1,0 +1,33 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    padding-top: 56px; /* Adjust based on your navbar height */
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  .hero {
+    height: calc(100vh - 56px); /* Full height minus the navbar height */
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+  }
+  .hero-content {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .navbar-light .navbar-brand, .navbar-light .nav-link {
+    color: #333;
+  }
+  .navbar-light .navbar-brand:hover, .navbar-light .nav-link:hover {
+    color: #000;
+  }
+  footer {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 1rem 0;
+  }
+  
