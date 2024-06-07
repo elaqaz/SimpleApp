@@ -1,37 +1,47 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div class="alert alert-danger">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="hero" style="background: url('https://source.unsplash.com/1600x900/?green') no-repeat center center; background-size: cover;">
+  <div class="hero-content">
+    <h1 class="display-4">Welcome to SimpleApp</h1>
+    <p class="lead">Manage your tasks efficiently with SimpleApp. Join us and explore the features designed to make your life easier.</p>
+    <hr class="my-4">
+    <p>Sign up now to get started with SimpleApp and improve your productivity.</p>
 
-  <div class="form-group mb-3">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: 'form-control', placeholder: 'Enter your name' %>
+    <h2 class="mt-4">Sign up</h2>
+
+    <%= form_with(model: user, local: true) do |form| %>
+      <% if user.errors.any? %>
+        <div class="alert alert-danger">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group mb-3">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: 'form-control', placeholder: 'Enter your name' %>
+      </div>
+
+      <div class="form-group mb-3">
+        <%= form.label :email %>
+        <%= form.email_field :email, class: 'form-control', placeholder: 'Enter your email' %>
+      </div>
+
+      <div class="form-group mb-3">
+        <%= form.label :password %>
+        <%= form.password_field :password, class: 'form-control', placeholder: 'Enter your password' %>
+      </div>
+
+      <div class="form-group mb-3">
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm your password' %>
+      </div>
+
+      <div class="form-group text-center">
+        <%= form.submit 'Sign Up', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="form-group mb-3">
-    <%= form.label :email %>
-    <%= form.email_field :email, class: 'form-control', placeholder: 'Enter your email' %>
-  </div>
-
-  <div class="form-group mb-3">
-    <%= form.label :password %>
-    <%= form.password_field :password, class: 'form-control', placeholder: 'Enter your password' %>
-  </div>
-
-  <div class="form-group mb-3">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm your password' %>
-  </div>
-
-  <div class="form-group text-center">
-    <%= form.submit 'Sign Up', class: 'btn btn-primary' %>
-  </div>
-<% end %>
-
+</div>
