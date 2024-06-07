@@ -57,12 +57,16 @@ footer {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+.btn {
+  padding: 0.75rem 1.25rem; /* Increased padding for better button appearance */
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem; /* Add margin between buttons */
+}
+
 .btn-primary {
   background-color: #007bff;
   border-color: #007bff;
-  padding: 0.75rem 1.25rem; /* Increased padding for better button appearance */
-  font-size: 1.25rem;
-  border-radius: 0.25rem;
 }
 
 .btn-primary:hover {
@@ -70,22 +74,54 @@ footer {
   border-color: #004085;
 }
 
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.mb-2 {
+  margin-bottom: 1rem !important; /* Increased margin for better spacing */
+}
+
+.mr-2 {
+  margin-right: 0.5rem !important; /* Margin right for better spacing */
+}
+
 .alert-danger {
   background-color: #f8d7da;
   color: #721c24;
   border-color: #f5c6cb;
   padding: 1rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem; /* Rounded corners for a softer look */
   margin-bottom: 1.5rem; /* Increased margin for better spacing */
+  text-align: left; /* Align text to the left */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added box shadow for better visibility */
 }
 
 .alert-danger h2 {
   font-size: 1.25rem;
   margin-top: 0;
+  margin-bottom: 1rem; /* Added margin bottom for better spacing */
 }
 
 .alert-danger ul {
   margin-bottom: 0;
+  padding-left: 1.25rem; /* Added padding for better readability */
 }
 
 .text-center {
