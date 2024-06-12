@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_secure_password
 
   # Before saving the user, downcase the email
-  before_save { email.downcase! }
+  before_save :downcase_email
 
   # Constants
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -14,9 +14,6 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false, message: "has already been taken" }
   validates :password, presence: true, length: { minimum: 6 }
-
-  # Callbacks
-  before_save { email.downcase! }
 
   # Instance Methods
   def self.digest(string)
@@ -41,5 +38,11 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  private
+
+  def downcase_email
+    self.email = email.downcase
   end
 end
