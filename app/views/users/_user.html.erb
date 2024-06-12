@@ -1,12 +1,22 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
-
+<div class="hero" style="background: url('https://source.unsplash.com/1600x900/?office,teamwork') no-repeat center center; background-size: cover;">
+  <div class="hero-content">
+    <h1 class="display-4">User Details</h1>
+    <p class="lead">User was successfully created.</p>
+    <hr class="my-4">
+    <div class="form-group">
+      <label><strong>Name:</strong></label>
+      <p><%= @user.name %></p>
+    </div>
+    <div class="form-group">
+      <label><strong>Email:</strong></label>
+      <p><%= @user.email %></p>
+    </div>
+    <div class="form-group">
+      <%= link_to 'Edit this user', edit_user_path(@user), class: 'btn btn-primary mb-2 mr-2' %>
+      <%= link_to 'Back to users', users_path, class: 'btn btn-secondary mb-2 mr-2' %>
+      <%= link_to 'Destroy this user', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mb-2' %>
+    </div>
+  </div>
 </div>
+
+
