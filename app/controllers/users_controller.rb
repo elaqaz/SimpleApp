@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: "User was successfully updated." }
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -47,18 +47,26 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
 
   def profile
-  # Logic for profile page
-   end
-
-def settings
-  # Logic for settings page
+    # Logic for profile page
   end
-end
+
+  def settings
+    @user = current_user
+  end
+
+  def change_password
+    if current_user.update_with_password(password_params)
+      redirect_to settings_path, notice: 'Password was successfully updated.'
+    else
+      render :settings
+    end
+  end
 
   private
 
@@ -71,6 +79,13 @@ end
   end
 
   def authenticate_user!
-    redirect_to login_path unless session[:user_id]
+    unless logged_in?
+      flash[:danger] = 'Please log in.'
+      redirect_to login_path
+    end
+  end
+
+  def password_params
+    params.require(:user).permit(:current_password, :new_password, :new_password_confirmation)
   end
 end
