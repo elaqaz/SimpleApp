@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[edit update destroy]
 
   # GET /users/new
   def new
@@ -12,8 +13,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
-        redirect_to root_path, notice: 'Successfully created account!'
-        format.html { redirect_to @user, notice: "User was successfully created." }
+        format.html { redirect_to @user, notice: 'Successfully created account!' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -50,7 +50,15 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
+
+  def profile
+  # Logic for profile page
+   end
+
+def settings
+  # Logic for settings page
   end
+end
 
   private
 
@@ -60,5 +68,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def authenticate_user!
+    redirect_to login_path unless session[:user_id]
   end
 end

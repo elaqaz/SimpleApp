@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static_pages#home' # or your desired root path
+  root 'pages#home' # Change this to 'home#index' if you have a Home controller
   
   get    'signup', to: 'users#new'
   post   'signup', to: 'users#create'
@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   get 'about',    to: 'pages#about'
   get 'contact',  to: 'pages#contact'
   get 'news',     to: 'pages#news'
+
+   # Define routes for Profile and Settings
+   get 'profile', to: 'users#profile', as: 'profile'
+   get 'settings', to: 'users#settings', as: 'settings'
+   get 'user_settings', to: 'users#settings', as: 'user_settings'
 
   # If you have microposts, you can add:
   resources :microposts

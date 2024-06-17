@@ -21,20 +21,38 @@
         <li class="nav-item">
           <a class="nav-link" href="https://www.linkedin.com/in/elzbieta-szymichowska-31309b289/" target="_blank">LinkedIn</a>
         </li>
-        <% if session[:user_id] %>
-          <li class="nav-item">
-            <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link', data: { turbo_method: :delete } %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to 'Login', login_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Sign Up', signup_path, class: 'nav-link' %>
-          </li>
-        <% end %>
+
+        <!-- Dropdown for Account -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+            <li><%= link_to 'Profile', profile_path, class: 'dropdown-item' %></li>
+            <li><%= link_to 'Settings', settings_path, class: 'dropdown-item' %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <% if session[:user_id] %>
+                <%= link_to 'Logout', logout_path, method: :delete, class: 'dropdown-item', data: { turbo_method: :delete } %>
+              <% else %>
+                <%= link_to 'Login', login_path, class: 'dropdown-item' %>
+                <%= link_to 'Sign Up', signup_path, class: 'dropdown-item' %>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Dropdown for Users -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Users
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="usersDropdown">
+            <li><%= link_to 'User List', users_path, class: 'dropdown-item' %></li>
+            <!-- <li><%= link_to 'User Settings', user_settings_path, class: 'dropdown-item' %></li> -->
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
-
