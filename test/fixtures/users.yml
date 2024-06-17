@@ -7,3 +7,9 @@ one:
 two:
   name: MyString
   email: MyString
+  
+# test/fixtures/users.yml
+valid_user:
+  name: Example User
+  email: user@example.com
+  password_digest: <%= User.digest('password') %>
