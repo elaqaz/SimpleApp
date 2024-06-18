@@ -15,6 +15,9 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false, message: 'has already been taken' }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
+  # Scopes
+  scope :admins, -> { where(admin: true) }
+
   # Class Methods
   class << self
     def digest(string)
@@ -52,6 +55,10 @@ class User < ApplicationRecord
       errors.add(:current_password, 'is incorrect')
       false
     end
+  end
+
+  def admin?
+    admin
   end
 
   private

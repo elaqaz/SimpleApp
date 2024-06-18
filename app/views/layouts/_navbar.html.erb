@@ -43,15 +43,18 @@
         </li>
 
         <!-- Dropdown for Users -->
+        <% if current_user&.admin? %>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Users
+          <a class="nav-link dropdown-toggle" href="#" id="aminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
           </a>
-          <ul class="dropdown-menu" aria-labelledby="usersDropdown">
+          <ul class="dropdown-menu" aria-labelledby="aminDropdown">
+            <li><%= link_to 'Admin Dashboard', admin_dashboard_path, class: 'dropdown-item' %></li>
             <li><%= link_to 'User List', users_path, class: 'dropdown-item' %></li>
             <li><%= link_to 'User Settings', settings_path, class: 'dropdown-item' %></li> 
           </ul>
         </li>
+        <% end %>
       </ul>
     </div>
   </div>
