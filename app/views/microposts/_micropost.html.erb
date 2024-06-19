@@ -1,12 +1,16 @@
-<div id="<%= dom_id micropost %>">
-  <p>
-    <strong>Content:</strong>
-    <%= micropost.content %>
-  </p>
+<% @microposts.each do |micropost| %>
+  <div id="<%= dom_id(micropost) %>" class="micropost">
+    <p>
+      <strong>Content:</strong>
+      <%= micropost.content %>
+    </p>
+    
+    <p>
+      <strong>User:</strong>
+      <%= micropost.user_id %>
+    </p>
+    
+    <small><%= micropost.created_at.strftime("%B %d, %Y %H:%M") %></small>
+  </div>
+<% end %>
 
-  <p>
-    <strong>User:</strong>
-    <%= micropost.user_id %>
-  </p>
-
-</div>

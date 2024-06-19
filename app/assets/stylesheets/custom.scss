@@ -203,3 +203,26 @@ footer {
   text-align: center;
   margin-bottom: 1.5rem;
 }
+
+.micropost {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.micropost h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.micropost p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.micropost small {
+  color: #888;
+}
+

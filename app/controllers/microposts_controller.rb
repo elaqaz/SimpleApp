@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  before_action :set_micropost, only: %i[ show edit update destroy ]
+  before_action :set_micropost, only: %i[show edit update destroy]
 
   # GET /microposts or /microposts.json
   def index
@@ -22,6 +22,7 @@ class MicropostsController < ApplicationController
   # POST /microposts or /microposts.json
   def create
     @micropost = Micropost.new(micropost_params)
+    @micropost.user = User.first # <--- Hardcoding the first user to the micropost
 
     respond_to do |format|
       if @micropost.save
@@ -58,6 +59,7 @@ class MicropostsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_micropost
       @micropost = Micropost.find(params[:id])
@@ -65,6 +67,6 @@ class MicropostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def micropost_params
-      params.require(:micropost).permit(:content, :user_id)
+      params.require(:micropost).permit(:content)
     end
 end

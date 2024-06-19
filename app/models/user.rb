@@ -2,6 +2,9 @@ class User < ApplicationRecord
   # Adds methods to set and authenticate against a BCrypt password
   has_secure_password
 
+  # Associations
+  has_many :microposts, dependent: :destroy
+
   # Constants
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
