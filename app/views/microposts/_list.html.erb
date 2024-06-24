@@ -1,0 +1,16 @@
+<% @microposts.each do |micropost| %>
+  <div id="<%= dom_id(micropost) %>" class="micropost">
+    <p>
+      <strong>Content:</strong>
+      <%= micropost.content %>
+    </p>
+    
+    <p>
+      <strong>User:</strong>
+      <%= micropost.user.name %> <!-- Assuming you have a user association -->
+    </p>
+    
+    <small><%= micropost.created_at.strftime("%B %d, %Y %H:%M") %></small>
+  </div>
+<% end %>
+

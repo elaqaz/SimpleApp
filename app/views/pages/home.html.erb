@@ -1,12 +1,17 @@
-<div class="hero" style="background: url('<%=  %>') no-repeat center center; background-size: cover;">
-  <div class="hero-content">
-    <h1 class="display-4">Welcome to SimpleApp</h1>
-    <p class="lead">Manage your tasks efficiently with SimpleApp. Join us and explore the features designed to make your life easier.</p>
-    <hr class="my-4">
-    <p>Sign up now to get started with SimpleApp and improve your productivity.</p>
-    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-light btn-lg mt-4' %>
+<% if logged_in? %>
+  <%= render 'microposts/micropost_form' %>
+  <%= render 'microposts/microposts_list' %>
+<% else %>
+  <div class="hero" style="background: url('<%= asset_path('background_image.jpg') %>') no-repeat center center; background-size: cover;">
+    <div class="hero-content">
+      <h1 class="display-4">Welcome to SimpleApp</h1>
+      <p class="lead">Manage your tasks efficiently with SimpleApp. Join us and explore the features designed to make your life easier.</p>
+      <hr class="my-4">
+      <p>Sign up now to get started with SimpleApp and improve your productivity.</p>
+      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-light btn-lg mt-4' %>
+    </div>
   </div>
-</div>
+<% end %>
 
 
 
