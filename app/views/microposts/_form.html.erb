@@ -1,26 +1,28 @@
 <%= form_with(model: @micropost, local: true) do |f| %>
   <% if @micropost.errors.any? %>
-    <div style="color: red">
+    <div class="alert-danger">
       <h2><%= pluralize(@micropost.errors.count, "error") %> prohibited this micropost from being saved:</h2>
       <ul>
-        <% @micropost.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% @micropost.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :content, style: "display: block" %>
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+  <div class="form-group">
+    <%= f.label :content, style: "display: block;" %>
+    <%= f.text_area :content, placeholder: "Compose new micropost...", class: "form-control" %>
   </div>
 
-  <div class="field" style="display: none;">
-    <%= f.label :user_id, style: "display: block" %>
-    <%= f.text_field :user_id, value: current_user.id %>
+  <div class="form-group" style="display: none;">
+    <%= f.label :user_id, style: "display: block;" %>
+    <%= f.text_field :user_id, value: current_user.id, class: "form-control" %>
   </div>
 
   <div class="actions">
     <%= f.submit "Post", class: "btn btn-primary" %>
   </div>
 <% end %>
+
+

@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get 'settings', to: 'users#settings', as: 'settings'
 
   # Microposts resource routes
-  resources :microposts, only: [:create, :destroy]
+  resources :microposts
 
   # Admin namespace for admin-specific routes
   namespace :admin do

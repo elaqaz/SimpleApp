@@ -1,5 +1,6 @@
 class MicropostsController < ApplicationController
   before_action :set_micropost, only: %i[show edit update destroy]
+  # before_action :authenticate_user!
 
   # GET /microposts or /microposts.json
   def index
@@ -21,8 +22,7 @@ class MicropostsController < ApplicationController
 
   # POST /microposts or /microposts.json
   def create
-    @micropost = Micropost.new(micropost_params)
-    @micropost.user = User.first # <--- Hardcoding the first user to the micropost
+    @micropost = current_user.microposts.build(micropost_params)
 
     respond_to do |format|
       if @micropost.save
@@ -50,7 +50,7 @@ class MicropostsController < ApplicationController
 
   # DELETE /microposts/1 or /microposts/1.json
   def destroy
-    @micropost.destroy!
+    @micropost.destroy
 
     respond_to do |format|
       format.html { redirect_to microposts_url, notice: "Micropost was successfully destroyed." }
@@ -60,13 +60,13 @@ class MicropostsController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_micropost
-      @micropost = Micropost.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_micropost
+    @micropost = Micropost.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def micropost_params
-      params.require(:micropost).permit(:content)
-    end
+  # Only allow a list of trusted parameters through.
+  def micropost_params
+    params.require(:micropost).permit(:content)
+  end
 end
